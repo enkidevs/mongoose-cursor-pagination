@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "prepare": "babel src --out-dir lib",
-    "test": "standard && mocha 'lib/**/__tests__/*'"
+    "test": "standard && babel src --out-dir lib && mocha 'lib/**/__tests__/*'"
   },
   "repository": {
     "type": "git",
