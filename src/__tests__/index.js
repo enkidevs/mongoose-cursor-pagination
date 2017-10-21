@@ -23,16 +23,16 @@ describe('mongoose-cursor-pagination', function () {
   })
 
   before(function () {
-    /* return mongoose.model('User').insertMany(Array(1000)
+    return mongoose.model('User').insertMany(Array(1000)
       .fill()
       .map((_, i) => ({
         name: `User ${i}`,
         value: i
-      }))) */
+      })))
   })
 
   after(function () {
-    // return mongoose.model('User').remove()
+    return mongoose.model('User').remove()
   })
 
   it('pagination with no options', function () {
