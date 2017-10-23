@@ -1,6 +1,6 @@
 # mongoose-cursor-pagination
 [![Build Status](https://travis-ci.org/enkidevs/mongoose-cursor-pagination.svg?branch=master)](https://travis-ci.org/enkidevs/mongoose-cursor-pagination.svg?branch=master)
-[![npm version](https://img.shields.io/npm/v/mongoose-cursor-pagination.svg?style=flat-square)](https://www.npmjs.com/package/mongoose-cursor-pagination)
+[![npm version](https://img.shields.io/npm/v/mongoose-cursor-pagination.svg)](https://www.npmjs.com/package/mongoose-cursor-pagination)
 [![Dependency Status](https://david-dm.org/enkidevs/mongoose-cursor-pagination.svg)](https://david-dm.org/enkidevs/mongoose-cursor-pagination)
 [![devDependency Status](https://david-dm.org/enkidevs/mongoose-cursor-pagination/dev-status.svg)](https://david-dm.org/enkidevs/mongoose-cursor-pagination#info=devDependencies)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/enkidevs/mongoose-cursor-pagination/issues)
