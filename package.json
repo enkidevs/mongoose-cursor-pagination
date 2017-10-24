@@ -1,6 +1,6 @@
 {
   "name": "mongoose-cursor-pagination",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mongoose cursor-based pagination.",
   "main": "lib/index.js",
   "files": [
