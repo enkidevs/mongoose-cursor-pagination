@@ -12,7 +12,7 @@ export default function paginationPlugin (schema, pluginOptions) {
   }
 
   schema.statics.paginate = function (query, options, callback) {
-    query = query || {}
+    query = query ? { ...query } : {}
     options = options || {}
     options.limit = +options.limit || defaultOptions.limit
     options = { ...defaultOptions, ...options }

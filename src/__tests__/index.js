@@ -110,4 +110,17 @@ describe('mongoose-cursor-pagination', function () {
         should.equal(results.items[4].value, 990)
       })
   })
+
+  it('does not modify the provided query object', function () {
+    const query = {}
+
+    return mongoose.model('User').paginate(query, {
+      key: 'value',
+      sort: { value: -1 },
+      endingBefore: 995
+    })
+      .then(() => {
+        query.should.eql({})
+      })
+  })
 })
