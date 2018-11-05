@@ -40,7 +40,7 @@ jobs:
               npm run prepare
             else
               NODE_ENV=development \
-              npm run build
+              npm run prepare
             fi
       - persist_to_workspace:
           root: ~/mongoose-cursor-pagination
