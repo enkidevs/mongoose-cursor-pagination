@@ -11,7 +11,7 @@
   },
   "scripts": {
     "prepare": "babel src --out-dir lib",
-    "test": "mocha 'lib/**/__tests__/*' --exit",
+    "test": "npm run prepare && mocha 'lib/**/__tests__/*' --exit",
     "format": "prettier --write 'src/**/*.js'",
     "lint:ci": "CI=true eslint . --ignore-path .gitignore --quiet",
     "lint": "eslint . --ignore-path .gitignore",
