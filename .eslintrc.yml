@@ -1,9 +1,4 @@
 parser: babel-eslint
-plugins:
-  - node
-  - import
-  - promise
-  - flow
 extends:
   - '@enkidevs/eslint-config-backend'
 rules:
