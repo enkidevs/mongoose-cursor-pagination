@@ -40,7 +40,7 @@ jobs:
               npm run prepare
             else
               NODE_ENV=development \
-              npm run build
+              npm run prepare
             fi
       - persist_to_workspace:
           root: ~/mongoose-cursor-pagination
@@ -61,6 +61,8 @@ jobs:
     working_directory: ~/mongoose-cursor-pagination
     docker:
       - image: circleci/node:8.10.0
+      - image: circleci/mongo:3.4-jessie-ram
+        command: [mongod]
     steps:
       - checkout
       - attach_workspace:
