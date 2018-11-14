@@ -1,0 +1,87 @@
+version: 2
+
+jobs:
+  install:
+    working_directory: ~/mongoose-cursor-pagination
+    docker:
+      - image: circleci/node:8.10.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - attach_workspace:
+          at: ~/mongoose-cursor-pagination
+      - run:
+          name: NPM Install
+          command: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: ~/mongoose-cursor-pagination
+          paths: ./node_modules
+  build:
+    working_directory: ~/mongoose-cursor-pagination
+    docker:
+      - image: circleci/node:8.10.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/mongoose-cursor-pagination
+      - run:
+          name: Build
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              NODE_ENV=production \
+              npm run prepare
+            else
+              NODE_ENV=development \
+              npm run prepare
+            fi
+      - persist_to_workspace:
+          root: ~/mongoose-cursor-pagination
+          paths:
+            - ./lib
+  lint:
+    working_directory: ~/mongoose-cursor-pagination
+    docker:
+      - image: circleci/node:8.10.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/mongoose-cursor-pagination
+      - run:
+          name: Lint
+          command: npm run lint:ci
+  test:
+    working_directory: ~/mongoose-cursor-pagination
+    docker:
+      - image: circleci/node:8.10.0
+      - image: circleci/mongo:3.4-jessie-ram
+        command: [mongod]
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/mongoose-cursor-pagination
+      - run:
+          name: Tests
+          command: npm run test
+
+workflows:
+  version: 2
+  install_build_lint_test:
+    jobs:
+      - install
+      - build:
+          requires:
+            - install
+      - lint:
+          requires:
+            - install
+      - test:
+          requires:
+            - install

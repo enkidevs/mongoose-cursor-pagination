@@ -1,0 +1,7 @@
+parser: babel-eslint
+extends:
+  - '@enkidevs/eslint-config-backend'
+rules:
+  node/no-unsupported-features/es-syntax: off
+  promise/always-return: off
+  func-names: off
