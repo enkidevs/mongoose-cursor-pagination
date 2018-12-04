@@ -132,24 +132,24 @@ describe('mongoose-cursor-pagination', () => {
         }
       )
       .then(results => {
-        should.equal(results.items.length, 5)
-        should.equal(results.hasMore, true)
-        should.equal(results.items[0].value, 994)
-        should.equal(results.items[4].value, 990)
-      })
-  })
+        should.equal(results.items.length, 5);
+        should.equal(results.hasMore, true);
+        should.equal(results.items[0].value, 994);
+        should.equal(results.items[4].value, 990);
+      }));
 
-  it('does not modify the provided query object', function () {
+  it('does not modify the provided query object', () => {
     const query = {};
 
-    return mongoose.model('User').paginate(query, {
-      key: 'value',
-      sort: { value: -1 },
-      endingBefore: 995,
-    })
-      .then(() => {
-        query.should.eql({})
+    return mongoose
+      .model('User')
+      .paginate(query, {
+        key: 'value',
+        sort: { value: -1 },
+        endingBefore: 995,
       })
-  })
+      .then(() => {
+        query.should.eql({});
+      });
+  });
 });
-
